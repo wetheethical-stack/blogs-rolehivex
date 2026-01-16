@@ -5,7 +5,7 @@ import {
   ZapOff, BatteryCharging, MonitorCheck, Clock, Coffee, LogOut, Check
 } from 'lucide-react';
 
-// --- DATABASE ---
+// --- DATABASE ------
 const DB = [
   {
                 id: 'ghost',
