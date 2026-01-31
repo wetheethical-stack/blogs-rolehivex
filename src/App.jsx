@@ -86,6 +86,104 @@ const DB = [
                     </div>
                 `
             },
+            {
+    id: 'amazon-layoffs-jan-2026',
+    category: 'Industry News',
+    type: 'Report',
+    date: 'Jan 30, 2026',
+    read: '4 Min Read',
+    title: 'Amazon Cuts 16,000 Roles: Inside "Project Dawn"',
+    desc: 'The second wave of the historic 30,000 workforce reduction hits AWS and Retail. Here is the breakdown.',
+    img: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=800&q=80',
+    featured: true,
+    content: `
+        <h1 class="text-4xl md:text-5xl font-serif text-white mb-6">The "Project Dawn" Restructuring</h1>
+        <p class="text-xl text-gray-400 mb-10 font-light leading-relaxed">The mandate is clear: "Operate like the world's largest startup." Here is how <strong>Amazon</strong> executed the largest corporate reduction in its history this week.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                    <i data-lucide="x-circle" class="text-red-500"></i> The Trigger
+                </h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    CEO Andy Jassy identified a "bureaucracy tax" stalling decision-making. Pre-managers (L4-L6) and middle management layers had grown by <strong>35%</strong> post-pandemic, while AI infrastructure costs ballooned to $100B/year.
+                </p>
+                <div class="p-4 bg-red-900/10 border border-red-500/20 rounded-lg">
+                    <p class="text-red-400 text-xs font-mono">IMPACT: 16,000 Corporate Roles Cut</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                    <i data-lucide="check-circle" class="text-green-500"></i> The Strategy
+                </h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    Under the internal initiative <strong>"Project Dawn"</strong>, Amazon is flattening the org chart. The goal is to increase the ratio of individual contributors (ICs) to managers by <strong>15%</strong> across AWS and Retail.
+                </p>
+                <div class="p-4 bg-green-900/10 border border-green-500/20 rounded-lg">
+                    <p class="text-green-400 text-xs font-mono">GOAL: 20% Faster Deployment Cycles</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-white mb-8 font-display">The Timeline: A Two-Stage Reset</h3>
+        
+        <div class="relative border-l-2 border-white/10 ml-4 mb-12 space-y-10">
+            <div class="relative pl-8">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-gray-500 rounded-full border-4 border-[#0c0c0c]"></div>
+                <h4 class="text-white font-bold text-lg">Oct 2025: Phase 1</h4>
+                <p class="text-gray-400 text-sm mt-1">14,000 roles eliminated. Focus was on consolidation of creative divisions and experimental hardware.</p>
+            </div>
+            <div class="relative pl-8">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-blue-500 rounded-full border-4 border-[#0c0c0c]"></div>
+                <h4 class="text-white font-bold text-lg">Jan 28, 2026: The Leak</h4>
+                <p class="text-gray-400 text-sm mt-1">An internal email regarding "Project Dawn" was inadvertently sent to AWS staff, revealing the scope of the second wave.</p>
+            </div>
+            <div class="relative pl-8">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-red-500 rounded-full border-4 border-[#0c0c0c]"></div>
+                <h4 class="text-white font-bold text-lg">Jan 30, 2026: Phase 2 Confirmed</h4>
+                <p class="text-gray-400 text-sm mt-1">16,000 additional corporate cuts confirmed. Heaviest impact in AWS Sales, PXT (HR), and Physical Retail.</p>
+            </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-white mb-6 font-display">Departmental Impact</h3>
+        <div class="overflow-hidden rounded-xl border border-white/10 mb-10">
+            <table class="w-full text-left bg-[#111]">
+                <thead>
+                    <tr class="bg-white/5 text-gray-400 text-xs uppercase tracking-widest">
+                        <th class="p-4">Division</th>
+                        <th class="p-4">Primary Function</th>
+                        <th class="p-4 text-red-400 font-bold">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 text-sm">
+                    <tr>
+                        <td class="p-4 text-gray-300 font-medium">AWS (Cloud)</td>
+                        <td class="p-4 text-gray-400">Sales & Solutions Arch.</td>
+                        <td class="p-4 text-red-400">High Impact</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 text-gray-300 font-medium">PXT (HR)</td>
+                        <td class="p-4 text-gray-400">Recruiting & Ops</td>
+                        <td class="p-4 text-red-400">Critical Reduction</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 text-gray-300 font-medium">Prime Video</td>
+                        <td class="p-4 text-gray-400">Content Strategy</td>
+                        <td class="p-4 text-yellow-400">Moderate Impact</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-8 bg-gradient-to-r from-red-900/20 to-transparent border border-red-500/20 rounded-2xl">
+            <h4 class="text-xl font-serif text-white mb-2">Affected by the shift?</h4>
+            <p class="text-gray-400 text-sm mb-6">Internal transfer windows are open for 90 days. Review the open requisition list for AI/ML roles.</p>
+            <a href="#" class="inline-block px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors text-sm">
+                View Internal Transfer Board
+            </a>
+        </div>
+    `
+},
            {
                 id: 'bounty',
                 category: 'Strategy',
