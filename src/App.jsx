@@ -5,7 +5,9 @@ import {
   ZapOff, BatteryCharging, MonitorCheck, Clock, Coffee, LogOut, Check
 } from 'lucide-react';
 
-// --- DATABASE ------
+// --- DATABASE PLACEHOLDER ---
+// 1. Paste your full 'const DB = [...]' array here.
+// 2. Ensure every item has a unique 'id' (e.g., id: 'msft-crash') for deep linking to work.
 const DB = [
   {
     id: 'ghost',
@@ -1230,7 +1232,8 @@ const DB = [
       </div>
     `
   },
-];
+  // ... PASTE DATA HERE ...
+]; 
 
 // --- COMPONENTS ---
 
@@ -1305,7 +1308,7 @@ const Toast = ({ message, type, onClose }) => {
   );
 };
 
-const ArticleModal = ({ article, onClose }) => {
+const ArticleModal = ({ article, onClose, onShare }) => {
   if (!article) return null;
 
   return (
@@ -1325,7 +1328,10 @@ const ArticleModal = ({ article, onClose }) => {
             </div>
           </div>
           <div className="flex gap-4">
-            <button className="text-gray-400 hover:text-white transition-colors">
+            <button 
+              onClick={() => onShare(article)} 
+              className="text-gray-400 hover:text-white transition-colors"
+            >
               <Share2 className="w-5 h-5" />
             </button>
             <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
@@ -1367,7 +1373,7 @@ export default function RoleHiveXEnterprise() {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Scroll Progress
+  // 1. Scroll Progress Logic
   useEffect(() => {
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollTop;
@@ -1379,7 +1385,7 @@ export default function RoleHiveXEnterprise() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Check Local Storage for Sub
+  // 2. Subscription Check Logic
   useEffect(() => {
     const savedEmail = localStorage.getItem('rolehivex_user_email');
     if (savedEmail) {
@@ -1388,18 +1394,70 @@ export default function RoleHiveXEnterprise() {
     }
   }, []);
 
-  // SECURE SUBSCRIBE FUNCTION
+  // 3. DEEP LINK LOGIC (NEW: Check URL on Load)
+  useEffect(() => {
+    // Looks for ?post=some-id in the URL
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('post');
+
+    if (postId) {
+      const foundArticle = DB.find(item => item.id === postId);
+      if (foundArticle) {
+        setSelectedArticle(foundArticle);
+      }
+    }
+  }, []);
+
+  // 4. NAVIGATION HELPERS (NEW: Update URL History)
+  const handleOpenArticle = (article) => {
+    setSelectedArticle(article);
+    // Push the article ID to the URL without reloading
+    const newUrl = `${window.location.pathname}?post=${article.id}`;
+    window.history.pushState({ path: newUrl }, '', newUrl);
+  };
+
+  const handleCloseArticle = () => {
+    setSelectedArticle(null);
+    // Remove the ?post= query param to clean the URL
+    window.history.pushState({ path: window.location.pathname }, '', window.location.pathname);
+  };
+
+  // 5. SHARE LOGIC (NEW: Shares Specific Link)
+  const handleShare = async (article) => {
+    // Generate the Deep Link
+    const specificUrl = `${window.location.origin}${window.location.pathname}?post=${article.id}`;
+
+    const shareData = {
+      title: article.title,
+      text: article.desc,
+      url: specificUrl,
+    };
+
+    try {
+      if (navigator.share && navigator.canShare(shareData)) {
+        await navigator.share(shareData);
+        setToast({ message: "Article shared successfully!", type: 'success' });
+      } else {
+        await navigator.clipboard.writeText(specificUrl);
+        setToast({ message: "Article link copied to clipboard!", type: 'success' });
+      }
+    } catch (error) {
+      if (error.name !== 'AbortError') {
+        navigator.clipboard.writeText(specificUrl);
+        setToast({ message: "Link copied to clipboard.", type: 'success' });
+      }
+    }
+  };
+
   const handleSubscribe = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    // 1. Validate Email
     if (!emailRegex.test(email)) {
       setToast({ message: "Please enter a valid email.", type: 'error' });
       return;
     }
 
     try {
-      // 2. Send to YOUR internal secure API (hides the destination)
       const response = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1420,26 +1478,20 @@ export default function RoleHiveXEnterprise() {
 
     } catch (error) {
       console.error("Submission Error", error);
-      // Fallback: Save locally if server fails (Offline Mode)
       localStorage.setItem('rolehivex_user_email', email);
       setIsSubscribed(true);
       setToast({ message: "Saved locally (Offline Mode).", type: 'success' });
     }
   };
 
-  // --- DATA FILTERING LOGIC (THE FIX) ---
+  // --- DYNAMIC LAYOUT LOGIC ---
   const filteredStories = activeTab === 'all' 
     ? DB 
     : DB.filter(item => item.category === activeTab);
   
-  // 1. The Big Feature (Top Left)
   const mainStory = filteredStories[0];
-
-  // 2. The Sidebar items (Top Right - Keep just 3 or 4 to match height of main story)
-  const sidebarStories = filteredStories.slice(1, 7);
-
-  // 3. The Feed items (Bottom Left - The rest of the data fills the empty space)
-  const feedStories = filteredStories.slice(7);
+  const sidebarStories = filteredStories.slice(1, 8); // 4 items for Sidebar
+  const feedStories = filteredStories.slice(8);       // Rest flow to bottom
 
   return (
     <div className="bg-[#050505] text-[#f8fafc] min-h-screen font-sans selection:bg-blue-500 selection:text-white overflow-x-hidden">
@@ -1455,10 +1507,8 @@ export default function RoleHiveXEnterprise() {
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")` }}>
       </div>
 
-      {/* Toast */}
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
-      {/* Navbar */}
       <nav className="fixed w-full z-40 border-b border-white/5 bg-[#050505]/80 backdrop-blur-xl transition-all">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -1476,7 +1526,6 @@ export default function RoleHiveXEnterprise() {
         </div>
       </nav>
 
-      {/* Header */}
       <header className="pt-32 pb-16 md:pt-40 md:pb-20 px-6 relative border-b border-white/5">
         <div className="max-w-7xl mx-auto text-center">
             <div className="inline-flex items-center gap-3 mb-8 animate-fadeIn opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
@@ -1496,7 +1545,6 @@ export default function RoleHiveXEnterprise() {
         </div>
       </header>
 
-      {/* Ticker */}
       <div className="w-full bg-[#0a0a0a] border-b border-white/5 overflow-hidden py-4 flex items-center relative z-20">
         <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
@@ -1529,7 +1577,6 @@ export default function RoleHiveXEnterprise() {
         </div>
       </div>
 
-      {/* Ecosystem Section */}
       <section id="ecosystem" className="py-24 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[320px]">
             <SpotlightCard className="md:col-span-2 flex flex-col justify-between" href="https://www.rolehivex.online/jobs.html">
@@ -1633,7 +1680,7 @@ export default function RoleHiveXEnterprise() {
                     {mainStory ? (
                         <article 
                             className="group cursor-pointer animate-fadeIn"
-                            onClick={() => setSelectedArticle(mainStory)}
+                            onClick={() => handleOpenArticle(mainStory)}
                         >
                             <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-8 relative border border-white/10 bg-[#111]">
                                 <img src={mainStory.img} className="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" alt={mainStory.title} />
@@ -1665,7 +1712,7 @@ export default function RoleHiveXEnterprise() {
                          <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-8">Recent Analysis</h4>
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                             {feedStories.map(story => (
-                                <article key={story.id} className="group cursor-pointer flex flex-col h-full" onClick={() => setSelectedArticle(story)}>
+                                <article key={story.id} className="group cursor-pointer flex flex-col h-full" onClick={() => handleOpenArticle(story)}>
                                     <div className="w-full aspect-[3/2] rounded-xl overflow-hidden mb-4 relative border border-white/10 bg-[#111]">
                                         <img src={story.img} className="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" alt={story.title} />
                                     </div>
@@ -1690,10 +1737,10 @@ export default function RoleHiveXEnterprise() {
                 {/* === RIGHT COLUMN / SIDEBAR (Span 4) === */}
                 <div className="lg:col-span-4 flex flex-col gap-10 border-l border-white/5 lg:pl-10 h-full">
                     
-                    {/* Render only sidebarStories (Top 3) */}
+                    {/* Render only sidebarStories (Top 4) */}
                     <div className="flex flex-col gap-10">
                         {sidebarStories.map(story => (
-                             <article key={story.id} className="group cursor-pointer animate-fadeIn" onClick={() => setSelectedArticle(story)}>
+                             <article key={story.id} className="group cursor-pointer animate-fadeIn" onClick={() => handleOpenArticle(story)}>
                                 <div className="w-full h-40 rounded-xl overflow-hidden mb-4 relative border border-white/10 bg-[#111]">
                                     <img src={story.img} className="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" alt={story.title} />
                                 </div>
@@ -1791,7 +1838,12 @@ export default function RoleHiveXEnterprise() {
       </footer>
 
       {/* Modal Overlay */}
-      <ArticleModal article={selectedArticle} onClose={() => setSelectedArticle(null)} />
+      {/* UPDATED: Connected handleShare and handleCloseArticle */}
+      <ArticleModal 
+        article={selectedArticle} 
+        onClose={handleCloseArticle} 
+        onShare={handleShare} 
+      />
 
     </div>
   );
