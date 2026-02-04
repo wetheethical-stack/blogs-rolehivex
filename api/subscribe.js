@@ -1,17 +1,20 @@
 export default async function handler(request, response) {
-  // 1. Get the secret URL from the server environment (Hidden from browser)
   const DB_URL = process.env.FIREBASE_SECRET_URL;
 
   if (!DB_URL) {
-    return response.status(500).json({ error: 'Database configuration missing' });
+    return response.status(500).json({ error: 'Database URL not configured in Vercel' });
   }
 
-  // 2. Only allow POST requests (Sending data)
   if (request.method === 'POST') {
     try {
-      const { email, date, source } = request.body;
-      
-      // 3. The Server talks to Firebase securely
+      // Ensure body is parsed if it arrives as a string
+      const body = typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
+      const { email, date, source } = body;
+
+      if (!email) {
+        return response.status(400).json({ error: 'Email is required' });
+      }
+
       const firebaseResponse = await fetch(DB_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,13 +24,13 @@ export default async function handler(request, response) {
       if (firebaseResponse.ok) {
         return response.status(200).json({ message: 'Success' });
       } else {
-        return response.status(500).json({ error: 'Firebase rejected the data' });
+        const errorText = await firebaseResponse.text();
+        return response.status(500).json({ error: 'Firebase rejected data', details: errorText });
       }
     } catch (error) {
-      return response.status(500).json({ error: 'Server connection failed' });
+      return response.status(500).json({ error: 'Server internal error', message: error.message });
     }
   } else {
-    // Block any other type of request
     return response.status(405).json({ message: 'Method Not Allowed' });
   }
 }
