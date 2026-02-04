@@ -1769,7 +1769,7 @@ export default function RoleHiveXEnterprise() {
                     <div className="mt-auto sticky top-24">
                         <div className="p-6 bg-white/5 rounded-xl border border-white/10 mb-6">
                             <h5 className="text-white font-bold mb-2">Weekly Briefing</h5>
-                            <p className="text-xs text-gray-400 mb-4">Get the hiring data your competitors don't have.</p>
+                            <p className="text-xs text-gray-400 mb-4">Get daily updates on Tech industry.</p>
                             
                             {!isSubscribed ? (
                                 <div className="flex flex-col gap-2">
