@@ -986,6 +986,188 @@ const DB = [
     `
 },
   {
+    id: 'singularity-index-2026',
+    category: 'Future of Humanity',
+    type: 'Mega-Report',
+    date: 'Feb 05, 2026',
+    read: '25 Min Read',
+    title: 'The Singularity Index 2026: The Year Humanity Blinked',
+    desc: 'A comprehensive deep-dive into the four technologies that just rendered "modern life" obsolete.',
+    img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
+    featured: true,
+    content: `
+      <div class="relative mb-12">
+        <h1 class="text-5xl md:text-7xl font-serif text-white mb-6 tracking-tight">The Year <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">Everything Changed.</span></h1>
+        <p class="text-2xl text-gray-300 font-light border-l-4 border-blue-500 pl-6 leading-relaxed">
+          Welcome to February 2026. If you are still thinking in terms of "apps" and "websites," you are already behind. We are no longer building software; we are cultivating intelligence, harvesting stars, and rewriting biology.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+        <div class="bg-white/5 p-4 rounded-lg border border-white/10 text-center hover:bg-white/10 transition-all cursor-pointer">
+          <div class="text-blue-400 font-bold text-xl mb-1">01</div>
+          <div class="text-xs text-gray-400 uppercase tracking-widest">Wetware Cloud</div>
+        </div>
+        <div class="bg-white/5 p-4 rounded-lg border border-white/10 text-center hover:bg-white/10 transition-all cursor-pointer">
+          <div class="text-purple-400 font-bold text-xl mb-1">02</div>
+          <div class="text-xs text-gray-400 uppercase tracking-widest">Helion Fusion</div>
+        </div>
+        <div class="bg-white/5 p-4 rounded-lg border border-white/10 text-center hover:bg-white/10 transition-all cursor-pointer">
+          <div class="text-orange-400 font-bold text-xl mb-1">03</div>
+          <div class="text-xs text-gray-400 uppercase tracking-widest">Orbital Cargo</div>
+        </div>
+        <div class="bg-white/5 p-4 rounded-lg border border-white/10 text-center hover:bg-white/10 transition-all cursor-pointer">
+          <div class="text-green-400 font-bold text-xl mb-1">04</div>
+          <div class="text-xs text-gray-400 uppercase tracking-widest">Labor Zero</div>
+        </div>
+      </div>
+
+      <div class="mb-20">
+        <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+          <span class="bg-blue-500 w-2 h-8 mr-4 rounded-full"></span>
+          Chapter 1: The Meat in the Machine
+        </h2>
+        
+        <div class="prose prose-invert max-w-none text-gray-300">
+          <p class="text-lg leading-relaxed mb-6">
+            Last month, <strong>Neuralink</strong> confirmed the opening of its "Giga-Clinic" in Austin, capable of performing 10,000 automated implants per month. The era of the "unaugmented human" is drawing to a close. But the bigger story isn't the chip in your head—it's the chip made <em>of</em> heads.
+          </p>
+          
+          <div class="bg-[#111] p-8 rounded-2xl border border-blue-500/20 my-8">
+            <h3 class="text-xl font-mono text-blue-400 mb-4">> SYSTEM STATUS: ORGANIC COMPUTE</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                <span class="text-gray-400">AWS Instance Type</span>
+                <span class="text-white font-bold">bio.cortex.xl</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                <span class="text-gray-400">Substrate</span>
+                <span class="text-white font-bold">Human Cortical Organoids (Lab Grown)</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                <span class="text-gray-400">Power Consumption</span>
+                <span class="text-green-400 font-bold">15 Watts</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400">Learning Rate</span>
+                <span class="text-purple-400 font-bold">1,000,000x vs Silicone</span>
+              </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-500 italic">
+              *Warning: Bio-instances require 4 hours of REM sleep cycles per 24-hour period. Do not interrupt dreaming phase.
+            </p>
+          </div>
+
+          <p class="mb-6">
+            Cortical Labs and Amazon BioServices have effectively solved the energy crisis of AI by bypassing silicon entirely. We are seeing LLMs trained on biological substrates that "grow" connections rather than calculating weights. The ethical implications are staggering, but the economics ($0.0001 per 1M tokens) are unstoppable.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-20">
+        <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+          <span class="bg-purple-500 w-2 h-8 mr-4 rounded-full"></span>
+          Chapter 2: The Sun in a Box
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 prose prose-invert text-gray-300">
+            <p class="text-lg">
+              <strong>Helion Energy</strong> has officially broken ground on the Orion facility in Washington. This is not a drill. The Microsoft PPA (Power Purchase Agreement) kicks in by 2028, but early 2026 pilot pulses suggest they have achieved <span class="text-purple-400 font-bold">Q > 1 (Net Energy Positive)</span> in burst mode.
+            </p>
+            <p class="mt-4">
+              While the public is distracted by AI chatbots, the geopolitical landscape is shifting to "Fusion Hegemony." If Helion delivers, the value of oil drops to zero for electricity generation within a decade.
+            </p>
+          </div>
+          <div class="bg-purple-900/10 border border-purple-500/20 p-6 rounded-xl flex flex-col justify-center items-center text-center">
+            <div class="text-6xl font-black text-white mb-2">100M°C</div>
+            <div class="text-sm text-purple-300 uppercase tracking-widest mb-4">Plasma Temperature</div>
+            <div class="w-full bg-gray-700 h-1 rounded-full overflow-hidden">
+              <div class="bg-gradient-to-r from-purple-500 to-pink-500 w-full h-full animate-pulse"></div>
+            </div>
+            <p class="text-xs text-gray-500 mt-4">Current Status: STABLE CONFINEMENT</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-20">
+        <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+          <span class="bg-orange-500 w-2 h-8 mr-4 rounded-full"></span>
+          Chapter 3: The Orbital Supply Chain
+        </h2>
+        
+        <blockquote class="border-l-4 border-orange-500 pl-6 italic text-xl text-gray-400 mb-8">
+          "Mars is no longer a dream. It is a logistics problem. And with Starship V3, we just solved the shipping cost."
+          <footer class="text-sm text-gray-500 mt-2 not-italic">— SpaceX Operations Lead, Boca Chica (Feb 2026)</footer>
+        </blockquote>
+
+        <div class="bg-[#0a0a0a] rounded-xl overflow-hidden border border-white/10">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="bg-white/5 text-gray-400 text-xs uppercase tracking-widest">
+                <th class="p-4">Vehicle</th>
+                <th class="p-4">Payload to Orbit</th>
+                <th class="p-4">Cost Per kg</th>
+                <th class="p-4">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-sm text-gray-300">
+              <tr>
+                <td class="p-4 font-bold">Falcon 9 (Legacy)</td>
+                <td class="p-4">22 Tons</td>
+                <td class="p-4">$2,700</td>
+                <td class="p-4 text-yellow-500">Retiring</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-white">Starship V2</td>
+                <td class="p-4">150 Tons</td>
+                <td class="p-4">$200</td>
+                <td class="p-4 text-green-500">Operational</td>
+              </tr>
+              <tr class="bg-orange-900/10">
+                <td class="p-4 font-bold text-orange-400">Starship V3</td>
+                <td class="p-4">200+ Tons</td>
+                <td class="p-4 text-orange-400">$35</td>
+                <td class="p-4 text-orange-400">Testing (Orbital Refueling)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+          <span class="bg-green-500 w-2 h-8 mr-4 rounded-full"></span>
+          Chapter 4: The Post-Labor Economy
+        </h2>
+        
+        <div class="prose prose-invert max-w-none text-gray-300">
+          <p>
+            The <strong>Figure 03</strong> and <strong>Tesla Optimus Gen 4</strong> have officially passed the "Nanny Test" (safely operating in unstructured home environments). But the industrial impact is immediate. BMW's Spartanburg plant reported a 400% efficiency increase after replacing 60% of human logistics roles with Figure 02 units.
+          </p>
+          <ul class="list-disc pl-6 space-y-2 mt-4 text-gray-400">
+            <li><strong>Blue Collar:</strong> Humanoid robots cost $130k and last 5 years. That is $12/hour for 24/7 labor.</li>
+            <li><strong>White Collar:</strong> "Agentic" AI swarms now write 90% of enterprise code.</li>
+            <li><strong>The New Job:</strong> "Prompt Engineer" is dead. The new job is <strong>"System Orchestrator"</strong>—managing the swarm.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 mt-12">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="text-sm text-gray-500">
+            © 2026 Future Tense Media. Verified by Protocol Droid 7.
+          </div>
+          <div class="flex gap-4">
+            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-gray-400 border border-white/10">#Singularity</span>
+            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-gray-400 border border-white/10">#BioCompute</span>
+            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-gray-400 border border-white/10">#SpaceX</span>
+          </div>
+        </div>
+      </div>
+    `
+},
+  {
     id: 'security',
     category: 'Engineering',
     type: 'Security',
