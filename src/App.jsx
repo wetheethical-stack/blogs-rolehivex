@@ -1513,11 +1513,13 @@ export default function RoleHiveXEnterprise() {
       <nav className="fixed w-full z-40 border-b border-white/5 bg-[#050505]/80 backdrop-blur-xl transition-all">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center gap-3">
-                <img 
-  src={rolehivex}
-  alt="RoleHiveX Logo"
-  className="w-9 h-9 object-contain"
-/>
+                <div className="flex items-center gap-3">
+   <img src={logo} alt="RoleHiveX Logo" className="h-10 w-auto"/>
+   <span className="font-display font-bold text-lg tracking-tight text-white">
+      RoleHiveX <span className="text-gray-500 font-normal">/ Enterprise</span>
+   </span>
+</div>
+
 
                 <span className="font-display font-bold text-lg tracking-tight text-white">RoleHiveX <span className="text-gray-500 font-normal">/ Enterprise</span></span>
             </div>
