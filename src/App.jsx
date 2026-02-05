@@ -1515,7 +1515,7 @@ export default function RoleHiveXEnterprise() {
             <div className="flex items-center gap-3">
                
    <img 
-  src={logo}
+  src={rolehivex}
   alt="RoleHiveX Logo"
   className="h-10 w-auto object-contain"
 />
