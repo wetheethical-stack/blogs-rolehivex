@@ -1514,11 +1514,12 @@ export default function RoleHiveXEnterprise() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center gap-3">
                
-   <img src={rolehivex} alt="RoleHiveX Logo" className="h-10 w-auto"/>
-   <span className="font-display font-bold text-lg tracking-tight text-white">
-      RoleHiveX <span className="text-gray-500 font-normal">/ Enterprise</span>
-   </span>
-</div>
+   <img 
+  src={logo}
+  alt="RoleHiveX Logo"
+  className="h-10 w-auto object-contain"
+/>
+
 
 
                 <span className="font-display font-bold text-lg tracking-tight text-white">RoleHiveX <span className="text-gray-500 font-normal">/ Enterprise</span></span>
