@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import logo from '../assets/logo.png';
+import rolehivex from '../assets/rolehivex.png';
 import { 
   ArrowUpRight, Users, Cpu, ArrowRight, Share2, X, CheckCircle, 
   AlertCircle, ShieldCheck, UserCheck, Laptop, HeartHandshake, 
